@@ -8,6 +8,7 @@ import Survey from './pages/Survey';
 import Freelances from './pages/Freelances';
 import Home from './pages/Home';
 import Results from './pages/Results';
+import { ThemeProvider } from './utils/context';
 
 const GlobalStyle = createGlobalStyle`
     * {
@@ -21,14 +22,16 @@ const GlobalStyle = createGlobalStyle`
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Router>
-    <GlobalStyle />
-    <Header />
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="survey/:questionNumber" element={<Survey />} />
-      <Route path="results" element={<Results />} />
-      <Route path="freelances" element={<Freelances />} />
-      <Route path="*" element={<Error />} />
-    </Routes>
+    <ThemeProvider>
+      <GlobalStyle />
+      <Header />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="survey/:questionNumber" element={<Survey />} />
+        <Route path="results" element={<Results />} />
+        <Route path="freelances" element={<Freelances />} />
+        <Route path="*" element={<Error />} />
+      </Routes>
+    </ThemeProvider>
   </Router>
 );
